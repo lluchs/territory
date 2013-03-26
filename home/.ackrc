@@ -1,0 +1,5 @@
+--follow
+--type-set
+coffee=.coffee
+--type-set
+less=.less
