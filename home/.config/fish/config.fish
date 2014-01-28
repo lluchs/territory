@@ -5,3 +5,6 @@ if set -q SSH_AUTH_SOCK
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
   set -e SSH_AUTH_SOCK
 end
+
+# Add homeshick function.
+source "$HOME/.homesick/repos/homeshick/homeshick.fish"
