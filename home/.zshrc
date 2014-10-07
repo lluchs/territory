@@ -12,8 +12,9 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle command-not-found
 
-# Syntax highlighting bundle.
+# GitHub repositories
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle rupa/z
 
 # Load the theme.
 antigen theme candy
