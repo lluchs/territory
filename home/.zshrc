@@ -1,3 +1,8 @@
+# ZSH configuration
+
+source ~/.homesick/repos/homeshick/homeshick.sh
+
+##### ANTIGEN #####
 source ~/.homesick/repos/territory/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
