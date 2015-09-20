@@ -1,6 +1,7 @@
 # ZSH configuration
 
 source ~/.homesick/repos/homeshick/homeshick.sh
+eval `keychain --eval --quick --quiet`
 
 ##### ANTIGEN #####
 source ~/.homesick/repos/territory/antigen/antigen.zsh
