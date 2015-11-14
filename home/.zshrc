@@ -50,3 +50,7 @@ bindkey '\en' history-beginning-search-forward
 
 # Alternative to `sudoedit` which only updates files after leaving the editor.
 alias Vim='sudo -E vim'
+
+##### LOCAL CONFIGURATION #####
+
+[[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
