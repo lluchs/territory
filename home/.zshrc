@@ -45,3 +45,8 @@ bindkey '^s' history-incremental-search-forward
 # Beginning search with <A-p> and <A-n>
 bindkey '\ep' history-beginning-search-backward
 bindkey '\en' history-beginning-search-forward
+
+##### ALIASES #####
+
+# Alternative to `sudoedit` which only updates files after leaving the editor.
+alias Vim='sudo -E vim'
