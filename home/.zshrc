@@ -1,28 +1,18 @@
 # ZSH configuration
 
 source ~/.homesick/repos/homeshick/homeshick.sh
-eval `keychain --eval --quick --quiet`
+
+##### GRML #####
+source ~/.homesick/repos/territory/grml-etc-core/etc/zsh/zshrc
+
+check_com keychain && eval `keychain --eval --quick --quiet`
 
 ##### ANTIGEN #####
 source ~/.homesick/repos/territory/antigen/antigen.zsh
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle command-not-found
-
 # GitHub repositories
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle rupa/z
-
-# Load the theme.
-antigen theme candy
-# Fix prompt (24h time)
-PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%T]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
-%{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
-
 
 # Tell antigen that you're done.
 antigen apply
