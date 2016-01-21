@@ -1,3 +1,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule "grml-etc-core"]
+	path = grml-etc-core
+	url = https://github.com/grml/grml-etc-core.git
