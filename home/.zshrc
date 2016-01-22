@@ -5,6 +5,9 @@ source ~/.homesick/repos/homeshick/homeshick.sh
 ##### GRML #####
 source ~/.homesick/repos/territory/grml-etc-core/etc/zsh/zshrc
 
+# Disable the ag alias.
+disable -a ag > /dev/null
+
 check_com keychain && eval `keychain --eval --quick --quiet`
 
 ##### ANTIGEN #####
