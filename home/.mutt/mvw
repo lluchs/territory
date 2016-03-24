@@ -1,0 +1,15 @@
+# MVW IMAP
+set imap_user=$my_mvw_user
+set imap_pass=$my_mvw_password
+set folder=imaps://fomalhaut.uberspace.de/
+
+# Specify where to save and/or look for postponed messages.
+set postponed = "=Drafts"
+
+# SMTP
+set from = $my_mvw_user    # value of the From: header
+set smtp_url = smtps://$my_mvw_user:$my_mvw_password@fomalhaut.uberspace.de
+
+account-hook $folder "set imap_user=$my_mvw_user imap_pass=$my_mvw_password"
+
+# vim: ft=muttrc:

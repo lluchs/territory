@@ -3,16 +3,8 @@
 # Source passwords.
 source "gpg -dq ~/.mutt/accounts.gpg |"
 
-# GMail IMAP
-set imap_user=$my_personal_user
-set imap_pass=$my_personal_password
-set folder=imaps://imap.gmail.com/
-
 set spoolfile=+INBOX
 mailboxes =INBOX
-
-# Specify where to save and/or look for postponed messages.
-set postponed = +[Gmail]/Drafts
 
 # Allow Mutt to open new imap connection automatically.
 unset imap_passive
@@ -24,10 +16,8 @@ set imap_keepalive = 300
 set mail_check = 120
 
 # SMTP -----------------------------------------------
-set from = $my_personal_user    # value of the From: header
 set use_from = yes              # add a From: header
 set ssl_force_tls = yes
-set smtp_url = smtps://$my_personal_user:$my_personal_password@smtp.gmail.com
 
 # Paths ----------------------------------------------
 set alias_file       = ~/.mutt/alias         # where to store aliases
@@ -120,3 +110,15 @@ set editor=vim
 
 # Color scheme
 source ~/.mutt/colors
+
+# Account Options ------------------------------------
+source ~/.mutt/mvw
+folder-hook $folder 'source ~/.mutt/mvw'
+
+source ~/.mutt/personal
+folder-hook $folder 'source ~/.mutt/personal'
+
+# Shortcuts
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.mutt/personal<enter><change-folder>!<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.mutt/mvw<enter><change-folder>!<enter>'
+macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
