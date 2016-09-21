@@ -43,3 +43,6 @@ bindkey '\en' history-beginning-search-forward
 
 # Alternative to `sudoedit` which only updates files after leaving the editor.
 alias Vim='sudo -E vim'
+
+# bsdtar supports more archive formats
+check_com bsdtar && alias tar=bsdtar
