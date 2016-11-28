@@ -1,0 +1,41 @@
+# kakoune configuration
+
+colorscheme base16
+
+# Line numbers
+addhl number_lines -separator " "
+
+# vim-like splitting
+alias global sp tmux-new-vertical
+alias global vsp tmux-new-horizontal
+
+# fuzzy finder
+def find -params 1 -shell-candidates %{ ag -g '' } %{ edit %arg{1} }
+
+# fzf bindings from issue #383
+def -docstring 'invoke fzf to open a file' \
+  fzf-file %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      FILE=`ag -l -g "" | fzf-tmux -d 15`
+      if [ -n "$FILE" ]; then
+        echo "eval -client '$kak_client' 'edit ${FILE}'" | kak -p ${kak_session}
+      fi
+    fi
+}}
+
+def -docstring 'invoke fzf to select a buffer' \
+  fzf-buffer %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      BUFFER=`echo ${kak_buflist} | tr : '\n' | fzf-tmux -d 15`
+      if [ -n "$BUFFER" ]; then
+        echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
+      fi
+    fi
+}}
+
+map global user f :fzf-file<ret>
+map global user b :fzf-buffer<ret>
