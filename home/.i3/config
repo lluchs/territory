@@ -7,7 +7,7 @@ set $mod Mod4
 focus_follows_mouse no
 
 # font for window titles. ISO 10646 = Unicode
-font pango:monospace 14
+font pango:monospace 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -144,17 +144,17 @@ bindsym ctrl+alt+a exec keepass --auto-type
 # Mouse configuration
 
 # The middle button over a titlebar kills the window
-bindsym --release button2 kill
+bindsym --release Mod2+button2 kill
 
 # The right button toggles floating
 bindsym $mod+button3 floating toggle
 
 # The side buttons move the window around
-bindsym button9 move left
-bindsym button8 move right
+bindsym Mod2+button9 move left
+bindsym Mod2+button8 move right
 
 # Workspace configuration
-set $primary_monitor DP-4
+set $primary_monitor HDMI-0
 set $secondary_monitor DVI-I-1
 workspace 1 output $primary_monitor
 workspace 3 output $primary_monitor
@@ -193,3 +193,4 @@ bar {
 # Required for GNOME Keyring
 #exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 #exec ~/wm-init.sh
+exec lxqt-policykit-agent
