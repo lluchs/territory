@@ -1,6 +1,7 @@
 # ZSH configuration
 
 source ~/.homesick/repos/homeshick/homeshick.sh
+source ~/.homesick/repos/territory/zplugin/zplugin.zsh
 
 ##### GRML #####
 source ~/.homesick/repos/territory/grml-etc-core/etc/zsh/zshrc
@@ -9,16 +10,6 @@ source ~/.homesick/repos/territory/grml-etc-core/etc/zsh/zshrc
 disable -a ag &> /dev/null
 
 check_com keychain && eval `keychain --eval --quick --quiet`
-
-##### ANTIGEN #####
-source ~/.homesick/repos/territory/antigen/antigen.zsh
-
-# GitHub repositories
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle rupa/z
-
-# Tell antigen that you're done.
-antigen apply
 
 ##### KEYBINDINGS #####
 
@@ -32,8 +23,8 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^x' push-line-or-edit
 
 # Incremental search like emacs mode
-bindkey '^r' history-incremental-search-backward
-bindkey '^s' history-incremental-search-forward
+#bindkey '^r' history-incremental-search-backward
+#bindkey '^s' history-incremental-search-forward
 
 # Beginning search with <A-p> and <A-n>
 bindkey '\ep' history-beginning-search-backward
@@ -48,3 +39,10 @@ alias Vim='sudo -E vim'
 check_com bsdtar && alias tar=bsdtar
 
 alias cal='cal -m'
+
+##### ZPLUGIN #####
+
+# GitHub repositories
+zplugin load zdharma/fast-syntax-highlighting
+zplugin load zdharma/history-search-multi-word
+zplugin load rupa/z
