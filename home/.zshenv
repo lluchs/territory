@@ -1,3 +1,3 @@
-export PATH="$PATH:$HOME/.homesick/repos/territory/bin"
+export PATH="$PATH:$HOME/territory/bin"
 
 [ -f ~/.zshenv.local ] && . ~/.zshenv.local

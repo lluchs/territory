@@ -1,10 +1,9 @@
 # ZSH configuration
 
-source ~/.homesick/repos/homeshick/homeshick.sh
-source ~/.homesick/repos/territory/zplugin/zplugin.zsh
+source ~/territory/zplugin/zplugin.zsh
 
 ##### GRML #####
-source ~/.homesick/repos/territory/grml-etc-core/etc/zsh/zshrc
+source ~/territory/grml-etc-core/etc/zsh/zshrc
 
 # Disable the ag alias.
 disable -a ag &> /dev/null
