@@ -1,7 +1,9 @@
 # Builds local configuration files.
 
 hostname := $(shell hostname)
-hostdir := host/$(hostname)
+# If there is no host directory for this system, use the
+# common one instead.
+hostdir := $(or $(wildcard host/$(hostname)),host/common)
 hostfiles := $(shell find "$(hostdir)" -type f)
 files := $(hostfiles:$(hostdir)/%=local/%)
 files := $(files:.m4=)
@@ -14,11 +16,11 @@ clean:
 stow: all
 	stow -R home local
 
-local/%: host/$(hostname)/%
+local/%: $(hostdir)/%
 	mkdir -p $(dir $@)
 	cp $^ $@
 
-local/%: host/$(hostname)/%.m4
+local/%: $(hostdir)/%.m4
 	mkdir -p $(dir $@)
 	m4 -Ihost $^ > $@
 
