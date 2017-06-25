@@ -149,6 +149,7 @@ bindsym ctrl+alt+a exec keepass --auto-type
 
 # The middle button over a titlebar kills the window
 bindsym --release Mod2+button2 kill
+bindsym --release button2 kill
 
 # The right button toggles floating
 bindsym $mod+button3 floating toggle
