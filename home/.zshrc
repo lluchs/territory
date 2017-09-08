@@ -44,4 +44,3 @@ alias cal='cal -m'
 # GitHub repositories
 zplugin load zdharma/fast-syntax-highlighting
 zplugin load zdharma/history-search-multi-word
-zplugin load rupa/z
