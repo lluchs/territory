@@ -40,6 +40,8 @@ check_com bsdtar && alias tar=bsdtar
 
 alias cal='cal -m'
 
+alias nix-zsh='nix-shell --run zsh'
+
 ##### ZPLUGIN #####
 
 # GitHub repositories
