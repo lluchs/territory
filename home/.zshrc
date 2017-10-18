@@ -42,6 +42,11 @@ alias cal='cal -m'
 
 alias nix-zsh='nix-shell --run zsh'
 
+##### TOOLS #####
+
+# Use ag as fzf search tool, if available.
+check_com ag && export FZF_DEFAULT_COMMAND='ag -g ""'
+
 ##### ZPLUGIN #####
 
 # GitHub repositories
