@@ -19,8 +19,10 @@ bindsym $mod+Return exec st tmux
 # kill focused window
 bindsym $mod+Shift+Q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# start program launcher (rofi or dmenu)
+syscmd(`command -v rofi > /dev/null')dnl
+set $launcher ifelse(sysval, `0', `rofi -show run', `dmenu_run')
+bindsym $mod+d exec $launcher
 
 # change focus
 bindsym $mod+h focus left
@@ -157,3 +159,5 @@ bindsym $mod+button3 floating toggle
 # The side buttons move the window around
 bindsym Mod2+button9 move left
 bindsym Mod2+button8 move right
+
+# vim: ft=i3.m4

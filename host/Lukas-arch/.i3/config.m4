@@ -1,4 +1,4 @@
-include(`common/.i3/config')
+include(`common/.i3/config.m4')
 
 # Workspace configuration
 set $primary_monitor HDMI-0

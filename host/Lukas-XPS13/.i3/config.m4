@@ -1,4 +1,4 @@
-include(`common/.i3/config')
+include(`common/.i3/config.m4')
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
