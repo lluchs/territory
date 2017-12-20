@@ -14,27 +14,33 @@ general {
 order += "ipv6"
 order += "disk /"
 #order += "run_watch DHCP"
-order += "run_watch VPN"
-#order += "wireless wlan0"
-order += "ethernet enp0s31f6"
-#order += "battery 0"
+#order += "run_watch VPN"
+ifdef(`have_wireless', `order += "wireless _first_"')
+order += "ethernet _first_"
+ifdef(`have_battery', `order += "battery 0"')
+ifdef(`cpu_temperature_id', `order += "cpu_temperature cpu_temperature_id"')
 order += "load"
 order += "volume master"
 order += "tztime local"
 
-wireless wlan0 {
+wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
-ethernet enp0s31f6 {
+ethernet _first_ {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "%status %consumption %percentage %remaining"
+        status_chr = "⚡"
+}
+
+cpu_temperature cpu_temperature_id {
+        format = "%degrees°C"
 }
 
 run_watch DHCP {
@@ -63,3 +69,5 @@ volume master {
 disk "/" {
         format = "%avail"
 }
+
+# vim: ft=conf.m4
