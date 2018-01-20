@@ -138,11 +138,15 @@ bindsym $mod+shift+S exec systemctl suspend
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ '-5%'
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ '+5%'
 bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+p exec pavucontrol
+bindsym $mod+c exec pavucontrol
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+
+# xrandr shortcut
+# The screen configuration button on Dell laptops is an alias for Win+P.
+bindsym $mod+p exec ~/territory/bin/monitorcfg
 
 # KeePass
 bindsym ctrl+alt+a exec keepass --auto-type

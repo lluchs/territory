@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+set -eu
+
+if command -v rofi > /dev/null; then
+	DMENU="rofi -dmenu -i -p monitor:"
+else
+	DMENU="dmenu -i -p monitor:"
+fi
+
+cmd=$(cat <(xrandr --listactivemonitors) <(xrandr) | awk '
+$1 ~ /[0-9]:/ && $2 ~ /\+/ {
+	active[$4] = 1;
+}
+
+/ connected / {
+	if ($1 in active) {
+		print "disable " $1;
+		for (m in active) if (m != $1) {
+			print "put " $1 " above " m;
+			print "put " $1 " below " m;
+			print "put " $1 " left-of " m;
+			print "put " $1 " right-of " m;
+			print "make " $1 " same-as " m;
+		}
+	} else {
+		print "enable " $1;
+	}
+}
+' | ${=DMENU})
+
+scmd=(${(s/ /)cmd})
+
+case ${scmd[1]} in
+# enable DP1
+enable)
+	xrandr --output ${scmd[2]} --auto
+	;;
+# disable DP1
+disable)
+	xrandr --output ${scmd[2]} --off
+	;;
+# put DP1 above eDP1
+# make DP1 same-as eDP1
+put|make)
+	xrandr --output ${scmd[2]} --${scmd[3]} ${scmd[4]}
+	;;
+*)
+	rofi -e "unknown command: $cmd"
+esac
