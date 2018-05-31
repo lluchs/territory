@@ -170,11 +170,13 @@ bindsym $mod+button3 floating toggle
 bindsym Mod2+button9 move left
 bindsym Mod2+button8 move right
 
+ifdef(`custom_bar', `# (configuration with custom bar)', `
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         font pango:monospace 12
         status_command i3status -c ~/.i3/i3status.conf
 }
+')
 
 # vim: ft=i3.m4

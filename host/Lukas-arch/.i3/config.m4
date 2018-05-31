@@ -1,3 +1,4 @@
+define(`custom_bar', `1')
 include(`common/.i3/config.m4')
 
 # Workspace configuration
@@ -41,5 +42,6 @@ bar {
 #exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 #exec ~/wm-init.sh
 exec lxqt-policykit-agent
+exec --no-startup-id nm-applet
 
 # vim: ft=i3.m4
