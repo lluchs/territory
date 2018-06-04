@@ -1,4 +1,4 @@
-define(`custom_bar', `1')
+#define(`custom_bar')
 include(`common/.i3/config.m4')
 
 # Workspace configuration
@@ -21,6 +21,7 @@ assign [class="Steam" title="^Steam$"] → 6
 assign [class="Steam" title="^Friends$"] → 8
 assign [class="Steam" title="- Chat$"] → 2
 
+ifdef(`custom_bar', `
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -34,6 +35,7 @@ bar {
         font pango:monospace 10
         status_command i3status -c ~/.i3/i3status.conf
 }
+')
 
 # Autostart
 # ibus-daemon for keyboard layouts
