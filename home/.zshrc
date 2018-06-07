@@ -11,6 +11,19 @@ disable -a ag &> /dev/null
 [[ -z "$SSH_AUTH_SOCK" ]] && \
 	check_com keychain && eval `keychain --eval --quick --quiet`
 
+##### PROMPT #####
+
+# Add slurm info to the prompt.
+function slurm_prompt() {
+	REPLY=${SLURM_JOB_ID:+$SLURM_JOB_NODELIST }
+}
+grml_theme_add_token slurm -f slurm_prompt
+
+prompt_items=(rc change-root user at host slurm path vcs)
+zstyle ':prompt:grml:left:setup' items $prompt_items
+zstyle ':prompt:grml:left:items:slurm' pre '%F{red}'
+zstyle ':prompt:grml:left:items:slurm' post '%f'
+
 ##### KEYBINDINGS #####
 
 # Use vi bindings.
