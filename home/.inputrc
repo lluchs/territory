@@ -22,10 +22,6 @@
 
 set editing-mode vi
 
-# Cycle completions with TAB/Shift-TAB.
-TAB: menu-complete
-"\e[Z": menu-complete-backward
-
 $if mode=vi
   set keymap vi-insert
   "jk": vi-movement-mode
