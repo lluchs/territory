@@ -138,7 +138,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Suspend
-bindsym $mod+shift+S exec systemctl suspend
+bindsym $mod+shift+S exec i3lock && systemctl suspend
 
 # Volume control
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ '-5%'
