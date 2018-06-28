@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# This script manages a shared slurm allocation, for example for compile jobs.
+
+# job_state returns the passed job's current state.
+job_state() {
+	scontrol show job "$1" |& grep -o "JobState=[A-Z]\+" | cut -d= -f2
+}
+
+# allocate_job allocates a job and prints its job id.
+allocate_job() {
+	salloc --no-shell -N1 -t 04:00:00 2> >(tee /dev/stderr | sed -n 's/.*allocation \([0-9]\+\).*/\1/p; T; q')
+}
+
+JOBID_FILE=$HOME/.srm-id
+[[ -e $JOBID_FILE ]] && read JOBID < "$JOBID_FILE"
+ok=
+while [[ -z $ok ]]; do
+	case "$(job_state $JOBID)" in
+		PENDING)
+			echo Waiting for job allocation $JOBID
+			while state=$(job_state $JOBID); [[ $state == PENDING ]]; do
+				sleep 2
+			done
+			[[ $state == RUNNING ]] && ok=1
+			;;
+		RUNNING)
+			ok=1
+			;;
+		*)
+			# allocate a new job
+			JOBID=$(allocate_job | tee "$JOBID_FILE")
+			ok=1
+	esac
+done
+
+srun --jobid=$JOBID "$@"
