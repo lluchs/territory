@@ -57,8 +57,11 @@ alias nix-zsh='nix-shell --run zsh'
 
 ##### TOOLS #####
 
-# Use ag as fzf search tool, if available.
-check_com ag && export FZF_DEFAULT_COMMAND='ag -g ""'
+# Use ag or rg as fzf search tool, if available.
+if   check_com rg; then FZF_DEFAULT_COMMAND='rg --files'
+elif check_com ag; then FZF_DEFAULT_COMMAND='ag -g ""'
+fi
+export FZF_DEFAULT_COMMAND
 
 ##### ZPLUGIN #####
 
