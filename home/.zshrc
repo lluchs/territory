@@ -55,6 +55,9 @@ alias cal='cal -m'
 
 alias nix-zsh='nix-shell --run zsh'
 
+# Search for filenames with a regex (like ag -g)
+alias rf='rg --files | rg'
+
 ##### TOOLS #####
 
 # Use ag or rg as fzf search tool, if available.
