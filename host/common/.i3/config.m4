@@ -104,6 +104,10 @@ bindcode $mod+Shift+17 move container to workspace 8
 bindcode $mod+Shift+18 move container to workspace 9
 bindcode $mod+Shift+19 move container to workspace 10
 
+# scratch
+bindsym $mod+Shift+x move scratchpad
+bindsym $mod+x scratchpad show
+
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
