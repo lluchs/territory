@@ -36,3 +36,10 @@
 	required = true
 [http "https://gopkg.in"]
 	followRedirects = true
+[credential]
+	helper = store
+[diff]
+	colorMoved = default
+	colorMovedWS = ignore-all-space
+[commit]
+	verbose = 1
