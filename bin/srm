@@ -33,4 +33,4 @@ while [[ -z $ok ]]; do
 	esac
 done
 
-srun --jobid=$JOBID "$@"
+srun --pty --jobid=$JOBID "$@"
