@@ -1,6 +1,6 @@
 [user]
 	name = Lukas Werling
-	email = lukas.werling@gmail.com
+	email = lukas@lwrl.de
 
 [core]
 	editor = vim
@@ -18,6 +18,12 @@
 
 [push]
 	default = upstream
+
+[sendemail]
+	smtpencryption = tls
+	smtpserver = smtp.migadu.com
+	smtpuser = lukas@lwrl.de
+	smtpserverport = 587
 
 [merge]
 	defaultToUpstream = 1
@@ -37,7 +43,7 @@
 [http "https://gopkg.in"]
 	followRedirects = true
 [credential]
-	helper = store
+	helper = libsecret
 [diff]
 	colorMoved = default
 	colorMovedWS = ignore-all-space
