@@ -22,3 +22,5 @@ set fish_color_end brred
 set fish_color_host normal
 set fish_color_user brblue --bold
 set fish_color_cwd white --bold
+
+set fish_greeting
