@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# This script sets up PulseAudio to bridge multiple voice chat applications
+# while also forwarding local microphone and speakers to both applications.
+
+# After running the script, connect each application's input and output to the
+# appropriately named sources and sinks (e.g., in pavucontrol):
+# 
+#      [APP1 Input] ----> (APP1) ----> [APP1 Output]
+#      [APP2 Input] ----> (APP2) ----> [APP2 Output]
+
+# The script sets up connections that look roughly like this:
+#
+#      [APP1 Input] ----> (APP1) ----> [APP1 Output]
+#        ↑  └──────>───────┐ ┌───────<──────┘     ↓
+#      [Mic]                ╳                [Speaker]
+#        ↓  ┌──────<───────┘ └───────>──────┐     ↑
+#      [APP2 Input] ----> (APP2) ----> [APP2 Output]
+
+SINK=${SINK:-@DEFAULT_SINK@}
+SOURCE=${SOURCE:-@DEFAULT_SOURCE@}
+APP1=${APP1:-APP1}
+APP2=${APP2:-APP2}
+
+set -eu
+
+echo "SINK (speaker): $SINK"
+echo "SOURCE (mic):   $SOURCE"
+echo "Cleanup: seq <last> -1 <first> | xargs -tn 1 pactl unload-module"
+
+set -x
+
+update_desc() {
+	pacmd update-sink-proplist "$1" device.description="\"$2\""
+	pacmd update-source-proplist "$1.monitor" device.description="\"Monitor of $2\""
+}
+
+# Connect application output to these
+pactl load-module module-remap-sink sink_name="${APP1}_out" master="$SINK"
+pactl load-module module-remap-sink sink_name="${APP2}_out" master="$SINK"
+update_desc "${APP1}_out" "${APP1} Output"
+update_desc "${APP2}_out" "${APP2} Output"
+
+# Inputs
+pactl load-module module-null-sink sink_name="${APP1}_in"
+pactl load-module module-null-sink sink_name="${APP2}_in"
+update_desc "${APP1}_in" "(${APP1} Input Sink)"
+update_desc "${APP2}_in" "(${APP2} Input Sink)"
+
+# Remap monitors, as some applications filter monitors from their input selection.
+pactl load-module module-remap-source source_name="${APP1}_in_remap" master="${APP1}_in.monitor"
+pactl load-module module-remap-source source_name="${APP2}_in_remap" master="${APP2}_in.monitor"
+pacmd update-source-proplist "${APP1}_in_remap" device.description="\"$APP1 Input\""
+pacmd update-source-proplist "${APP2}_in_remap" device.description="\"$APP2 Input\""
+
+# Connect outputs to inputs cross-wise
+pactl load-module module-loopback source="${APP1}_out.monitor" sink="${APP2}_in"
+pactl load-module module-loopback source="${APP2}_out.monitor" sink="${APP1}_in"
+
+# Connect microphone
+pactl load-module module-loopback source="${SOURCE}" sink="${APP1}_in"
+pactl load-module module-loopback source="${SOURCE}" sink="${APP2}_in"
