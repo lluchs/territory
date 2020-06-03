@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Hashes the input to a color.
+
+sha256sum | awk -n '{
+	n = "0x" $1;
+	switch (n % 7) {
+	case 0: print "red"; break;
+	case 1: print "green"; break;
+	case 2: print "yellow"; break;
+	case 3: print "blue"; break;
+	case 4: print "magenta"; break;
+	case 5: print "cyan"; break;
+	case 6: print "white"; break;
+	}
+	exit
+}'
