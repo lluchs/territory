@@ -4,3 +4,6 @@
 [submodule "zplugin"]
 	path = zplugin
 	url = https://github.com/zdharma/zplugin
+[submodule "tmux/plugins/tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
