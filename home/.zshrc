@@ -60,6 +60,16 @@ alias nix-zsh='nix-shell --run zsh'
 # Search for filenames with a regex (like ag -g)
 alias rf='rg --files | rg'
 
+# colored ip output
+alias ip='ip --color=auto'
+
+##### FUNCTIONS #####
+
+# Print all keys/values for a gsettings path.
+function gsettings-get-all() {
+	gsettings list-keys $1  | xargs -tn 1 gsettings get $1
+}
+
 ##### TOOLS #####
 
 # Use ag or rg as fzf search tool, if available.
