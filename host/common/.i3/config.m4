@@ -14,7 +14,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
-bindsym $mod+Return exec st tmux
+bindsym $mod+Return exec alacritty -e tmux
 
 # kill focused window
 bindsym $mod+Shift+Q kill
