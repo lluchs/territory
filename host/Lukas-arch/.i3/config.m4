@@ -1,4 +1,4 @@
-#define(`custom_bar')
+define(`custom_bar')
 include(`common/.i3/config.m4')
 
 # Workspace configuration
@@ -26,13 +26,13 @@ ifdef(`custom_bar', `
 # finds out, if available)
 bar {
         output $primary_monitor
-        font pango:monospace 20
+        font pango:monospace 12
         status_command i3status -c ~/.i3/i3status.conf
 }
 
 bar {
         output $secondary_monitor
-        font pango:monospace 10
+        font pango:monospace 6
         status_command i3status -c ~/.i3/i3status.conf
 }
 ')
