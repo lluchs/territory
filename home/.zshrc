@@ -60,6 +60,9 @@ alias nix-zsh='nix-shell --run zsh'
 # Search for filenames with a regex (like ag -g)
 alias rf='rg --files | rg'
 
+# Avoid scp
+alias rscp='rsync --info=progress2'
+
 # colored ip output
 alias ip='ip --color=auto'
 
