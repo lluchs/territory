@@ -24,10 +24,11 @@
 	smtpserver = smtp.migadu.com
 	smtpuser = lukas@lwrl.de
 	smtpserverport = 587
+	annotate = yes
 
 [merge]
 	defaultToUpstream = 1
-	tool = splice
+	tool = diffconflicts
 
 [mergetool "splice"]
 	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
@@ -49,3 +50,10 @@
 	colorMovedWS = ignore-all-space
 [commit]
 	verbose = 1
+[pull]
+	ff = only
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
