@@ -17,6 +17,12 @@ case "$ID" in
 			|| error "dnf install failed"
 		;;
 
+	arch|archarm)
+		echo "for Arch Linux..."
+		sudo pacman -Syu --noconfirm base-devel ctags git htop ripgrep stow tmux vim zsh \
+			|| error "pacman -Syu failed"
+		;;
+
 	*)
 		error "failed: unknown distribution $ID"
 		;;
