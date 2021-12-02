@@ -1,9 +1,9 @@
 [submodule "grml-etc-core"]
 	path = grml-etc-core
 	url = https://github.com/grml/grml-etc-core.git
-[submodule "zplugin"]
-	path = zplugin
-	url = https://github.com/zdharma/zplugin
 [submodule "tmux/plugins/tmux-resurrect"]
 	path = tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "zinit"]
+	path = zinit
+	url = https://github.com/zdharma-continuum/zinit
