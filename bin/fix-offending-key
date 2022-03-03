@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+error() {
+	echo "error: $@"
+	exit 1
+}
+
+[[ -z $TMUX ]] && error not a tmux session
+
+oldifs=$IFS
+IFS=':'
+file=( $(tmux capture-pane -p -S-100 | awk '/^Offending .* key in/ { file = $5 } END { print file }') )
+IFS=$oldifs
+
+[[ -z $file ]] && error no offending key message found
+
+sed -n "${file[1]} p" "${file[0]}"
+
+while true; do
+	echo -n 'Delete? (y/n) '
+	read -n1 reply
+	echo
+	case $reply in
+		y)
+			break
+			;;
+		n)
+			exit 0
+	esac
+done
+
+sed -i "${file[1]} d" "${file[0]}"
