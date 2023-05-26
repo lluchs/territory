@@ -66,6 +66,9 @@ alias rscp='rsync --info=progress2'
 # colored ip output
 alias ip='ip --color=auto'
 
+# dnf from cache only per default
+alias dnf='dnf --cacheonly'
+
 ##### FUNCTIONS #####
 
 # Print all keys/values for a gsettings path.
