@@ -3,6 +3,17 @@ theme = "gruvbox"
 [editor]
 true-color = true
 auto-pairs = false
+color-modes = true
+
+[editor.indent-guides]
+render = true
+character = "│"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
 
 [keys.insert]
 j = { k = "normal_mode" } # Maps `jk` to exit insert mode
