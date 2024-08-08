@@ -1,11 +1,5 @@
 # Fish configuration
 
-# Use universal variables to transfer SSH_AUTH_SOCK to tmux sessions.
-if set -q SSH_AUTH_SOCK
-  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-  set -e SSH_AUTH_SOCK
-end
-
 fish_vi_key_bindings
 bind -M insert jk 'set fish_bind_mode default; commandline -f backward-char force-repaint'
 
@@ -24,3 +18,11 @@ set fish_color_user brblue --bold
 set fish_color_cwd white --bold
 
 set fish_greeting
+
+# Aliases
+
+abbr --add o xdg-open
+
+abbr --add nixs --set-cursor nix shell nixpkgs#%
+abbr --add nixr --set-cursor nix run nixpkgs#%
+abbr --add nixd nix develop -c \$SHELL
