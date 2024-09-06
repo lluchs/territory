@@ -6,9 +6,13 @@ command = "deno"
 args = ["lsp"]
 config = { deno = { enable = true } }
 
-# remove with helix 24.04
 [language-server.typst-lsp]
 command = "typst-lsp"
+config = { exportPdf = "never" }
+
+[language-server.tinymist]
+command = "tinymist"
+config = { exportPdf = "never", formatterMode = "typstyle" }
 
 [[language]]
 name = "janet"
@@ -27,21 +31,26 @@ language-servers = [
 ]
 
 [[language]]
+name = "jsx"
+language-servers = [
+  { name = "deno" },
+]
+
+[[language]]
 name = "typescript"
 language-servers = [
   { name = "deno" },
 ]
 
-# remove with helix 24.04
+[[language]]
+name = "tsx"
+language-servers = [
+  { name = "deno" },
+]
+
 [[language]]
 name = "typst"
-scope = "source.typst"
-injection-regex = "typst"
-file-types = ["typst", "typ"]
-roots = []
-comment-token = "//"
-language-servers = ["typst-lsp"]
-indent = { tab-width = 2, unit = "  " }
+language-servers = ["tinymist"]
 
 [language.auto-pairs]
 '(' = ')'
