@@ -15,5 +15,9 @@ display-inlay-hints = true
 [editor.soft-wrap]
 enable = true
 
+[keys.normal]
+"ö" = "collapse_selection"
+"A-ö" = "flip_selections"
+
 [keys.insert]
 j = { k = "normal_mode" } # Maps `jk` to exit insert mode
