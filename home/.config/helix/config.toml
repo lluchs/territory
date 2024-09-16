@@ -19,5 +19,9 @@ enable = true
 "ö" = "collapse_selection"
 "A-ö" = "flip_selections"
 
+[keys.normal.space.t]
+d = ":theme gruvbox"
+l = ":theme gruvbox_light"
+
 [keys.insert]
 j = { k = "normal_mode" } # Maps `jk` to exit insert mode
