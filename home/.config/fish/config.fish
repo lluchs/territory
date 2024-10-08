@@ -1,7 +1,10 @@
 # Fish configuration
 
 fish_vi_key_bindings
+# jk to insert normal mode
 bind -M insert jk 'set fish_bind_mode default; commandline -f backward-char force-repaint'
+# merge history from other fish instances on empty command line
+bind -M insert \r 'test -z "$(commandline)" && history --merge; commandline -f execute'
 
 set fish_color_command green
 set fish_color_operator brblue --bold
