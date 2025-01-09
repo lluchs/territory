@@ -2,3 +2,9 @@ font-family = Iosevka Term
 font-size = 16
 theme = dark:GruvboxDark,light:GruvboxLight
 unfocused-split-opacity = 1
+
+# split navigation with neo
+keybind = ctrl+alt+s=goto_split:left
+keybind = ctrl+alt+n=goto_split:bottom
+keybind = ctrl+alt+r=goto_split:top
+keybind = ctrl+alt+t=goto_split:right
