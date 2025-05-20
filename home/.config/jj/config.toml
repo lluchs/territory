@@ -3,6 +3,7 @@ name = "Lukas Werling"
 email = "lukas@lwrl.de"
 
 [ui]
+default-command = "log"
 pager = "less -FRX"
 editor = "hx"
 
